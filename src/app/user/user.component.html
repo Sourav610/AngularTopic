@@ -1,6 +1,7 @@
 <div>
     <button>
-        <img src/>
-        <span>Name</span>
+        <img [src]="'assets/users/'+ selectedUser.avatar"
+        [alt]="selectedUser.name"/> <!-- property binding -->
+        <span>{{selectedUser.name}}</span> <!-- string interpolation to bind the component name-->
     </button>
 </div>
