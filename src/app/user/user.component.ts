@@ -1,4 +1,4 @@
-import { Component,Input } from '@angular/core';
+import { Component,Input,computed,input, Output, EventEmitter } from '@angular/core';
 import { DUMMY_USERS } from '../dummy-users';
 
 const randomIndex = Math.floor(Math.random()*DUMMY_USERS.length)
@@ -21,15 +21,30 @@ export class UserComponent {
   //   return 'assets/users/'+this.selectedUser.avatar // it will not work in signal
   // }
 
+  //signal input
+  // avatar = input<string>(); //here we can provide initial value.
+  // avatar = input.required<string>(); // here we cannot provide initial value
+  // name = input.required<string>();
+
+  // imagePath = computed(() => {
+  //   return 'assets/users' + this.avatar();
+  // })
+
+  //component input decorator
+  @Input({required:true}) id!:string; 
+  @Input({required: true}) avatar!:string;  // ! it tells typescript that it will definitely set some value as typescript will not able to find.
+  @Input({required:true}) name!:string;  // required part tell that value must be set in html component.
+
   get imagePath(){
-    return 'assets/users/'+this.avatar // it will not work in signal
+    return 'assets/users/'+this.avatar; // it will not work in signal
   }
 
-  @Input() avatar!:string;  // ! it tells typescript that it will definitely set some value as typescript will not able to find.
-  @Input() name!:string;
+  //custom event
+  @Output() select = new EventEmitter(); //this even emitter will allow us to emit custom value through the select property through any part of interest
 
   onSelectUser(){
     // const randomIndex = Math.floor(Math.random()*DUMMY_USERS.length);
     // this.selectedUser.set(DUMMY_USERS[randomIndex]);
+    this.select.emit(this.id);
   }
 }
