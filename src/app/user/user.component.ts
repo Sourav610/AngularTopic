@@ -1,4 +1,4 @@
-import { Component,Input,computed,input, Output, EventEmitter } from '@angular/core';
+import { Component,Input,computed,input, Output, EventEmitter,output } from '@angular/core';
 import { DUMMY_USERS } from '../dummy-users';
 
 const randomIndex = Math.floor(Math.random()*DUMMY_USERS.length)
@@ -40,8 +40,8 @@ export class UserComponent {
   }
 
   //custom event
-  @Output() select = new EventEmitter(); //this even emitter will allow us to emit custom value through the select property through any part of interest
-
+  @Output() select = new EventEmitter<string>(); //this even emitter will allow us to emit custom value through the select property through any part of interest
+  // select = output<string>(); //work same as output decorator but not create signal
   onSelectUser(){
     // const randomIndex = Math.floor(Math.random()*DUMMY_USERS.length);
     // this.selectedUser.set(DUMMY_USERS[randomIndex]);
