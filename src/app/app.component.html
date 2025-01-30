@@ -2,7 +2,7 @@
 
 <main>
   <ul id="users">
-    <li>
+    <!-- <li>
       <app-user [id]="users[0].id" [avatar]="users[0].avatar" [name]="users[0].name" (select)="onSelectUser($event)"/>
     </li>
     <li>
@@ -13,7 +13,21 @@
     </li>
     <li>
       <app-user [id]="users[3].id" [avatar]="users[3].avatar" [name]="users[3].name" (select)="onSelectUser($event)" />
+    </li> -->
+
+    <!-- when using user object to access the value. -->
+    <li>
+      <app-user [user]="users[0]" (select)="onSelectUser($event)"/>
     </li>
+    <li>
+      <app-user [user]="users[1]" (select)="onSelectUser($event)" />
+    </li>
+    <li>
+      <app-user [user]="users[2]" (select)="onSelectUser($event)" />
+    </li>
+    <li>
+      <app-user [user]="users[3]" (select)="onSelectUser($event)" />
+    </li> 
   </ul>
     <app-task [name]="selectedUser?.name"/>
 </main>

@@ -2,8 +2,8 @@
     <button (click)="onSelectUser()">
         <img 
         [src]="imagePath"
-        [alt]="name"/> <!-- property binding -->
+        [alt]="user.name"/> <!-- property binding -->
         <!-- <span>{{selectedUser.name}}</span> string interpolation to bind the component name -->
-        <span>{{name}}</span> <!--signal read value is executed and give the value -->
+        <span>{{user.name}}</span> <!--signal read value is executed and give the value -->
     </button>
 </div>
