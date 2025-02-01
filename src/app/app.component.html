@@ -16,7 +16,7 @@
     </li> -->
 
     <!-- when using user object to access the value. -->
-    <li>
+    <!-- <li>
       <app-user [user]="users[0]" (select)="onSelectUser($event)"/>
     </li>
     <li>
@@ -27,7 +27,28 @@
     </li>
     <li>
       <app-user [user]="users[3]" (select)="onSelectUser($event)" />
-    </li> 
+    </li>  -->
+    <!-- using for to handle dynamic value after angular 17 -->
+    @for(user of users; track user.id){
+      <li>
+        <app-user [user]="user" (select)="onSelectUser($event)"/>
+      </li>
+    }
+    <!-- before angular 17 -->
+    <!-- <li *ngFor="let user of users">
+      <app-user [user]="user"(select)="onSelectUser($event)"/>
+    </li> -->
   </ul>
-    <app-task [name]="selectedUser?.name"/>
+    <!-- <app-task [name]="selectedUser?.name"/> -->
+    @if (selectedUser){
+      <app-task [name] = "selectedUser.name"/>
+    } @else{
+      <p id="fallback">Select a user to see their tasks!</p>
+    }
+
+    <!-- before angular 17 -->
+    <!-- <app-task *ngIf="selectedUser; else fallback" [name]="selectedUser!.name"/>
+    <ng-template #fallback>
+      <p id ="fallback">Select a user to see their tasks!</p>
+    </ng-template> -->
 </main>

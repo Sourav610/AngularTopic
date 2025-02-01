@@ -3,6 +3,18 @@ import { DUMMY_USERS } from '../dummy-users';
 
 const randomIndex = Math.floor(Math.random()*DUMMY_USERS.length)
 
+// type User = {
+//   id:string;
+//   avatar:string;
+//   name: string;
+// }
+
+interface User{
+  id:string;
+  avatar:string;
+  name: string;
+
+}
 @Component({
   selector: 'app-user',
   standalone: true,
@@ -36,11 +48,7 @@ export class UserComponent {
   // @Input({required:true}) name!:string;  // required part tell that value must be set in html component.
 
   //simplify all above input to single object
-  @Input({required:true}) user!: {
-    id:string;
-    avatar:string;
-    name:string;
-  }
+  @Input({required:true}) user!: User;
 
   // get imagePath(){
   //   return 'assets/users/'+this.avatar; // it will not work in signal
