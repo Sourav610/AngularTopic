@@ -1,20 +1,8 @@
 import { Component,Input,computed,input, Output, EventEmitter,output } from '@angular/core';
 import { DUMMY_USERS } from '../dummy-users';
-
+import {type User} from './user.model'
 const randomIndex = Math.floor(Math.random()*DUMMY_USERS.length)
 
-// type User = {
-//   id:string;
-//   avatar:string;
-//   name: string;
-// }
-
-interface User{
-  id:string;
-  avatar:string;
-  name: string;
-
-}
 @Component({
   selector: 'app-user',
   standalone: true,
@@ -49,7 +37,7 @@ export class UserComponent {
 
   //simplify all above input to single object
   @Input({required:true}) user!: User;
-
+  @Input({required:true})selected!:boolean;
   // get imagePath(){
   //   return 'assets/users/'+this.avatar; // it will not work in signal
   // }
