@@ -1,18 +1,20 @@
 import { Component , Input } from "@angular/core"
 import { RequiredValidator } from "@angular/forms";
 import { TasksComponent } from "./tasks/tasks.component";
+import { NewTaskComponent } from "./new-task/new-task.component";
 
 @Component({
     selector: 'app-task',
     standalone: true,
-    imports: [TasksComponent],
+    imports: [TasksComponent,NewTaskComponent],
     templateUrl: './task.component.html',
     styleUrl: './task.component.css'
   })
 
 export class TaskComponent{
     @Input({required:true}) userId!:string;
-    @Input({required:true}) name!: string;
+    @Input({required:true}) name!: string; 
+    isAddingTask = false;
     tasks = [
       {
         id:'t1',
@@ -42,5 +44,13 @@ export class TaskComponent{
 
     onCompleteTask(id:string){
       this.tasks = this.tasks.filter((task)=> task.id !== id);
+    }
+
+    onStartAddTask(){
+      this.isAddingTask = true;
+    }
+
+    onClickClose(){
+      this.isAddingTask = false;
     }
 }
