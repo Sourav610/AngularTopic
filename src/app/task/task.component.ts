@@ -2,7 +2,7 @@ import { Component , Input } from "@angular/core"
 import { RequiredValidator } from "@angular/forms";
 import { TasksComponent } from "./tasks/tasks.component";
 import { NewTaskComponent } from "./new-task/new-task.component";
-
+import { type NewTaskData } from "./tasks/tasks.model";
 @Component({
     selector: 'app-task',
     standalone: true,
@@ -51,6 +51,17 @@ export class TaskComponent{
     }
 
     onClickClose(){
+      this.isAddingTask = false;
+    }
+
+    onAddTask(taskData: NewTaskData){
+      this.tasks.unshift({
+        id:new Date().getTime().toString(),
+        userId:this.userId,
+        title:taskData.title,
+        summary:taskData.summary,
+        dueDate: taskData.date
+      })
       this.isAddingTask = false;
     }
 }
