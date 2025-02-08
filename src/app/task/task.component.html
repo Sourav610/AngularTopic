@@ -1,5 +1,7 @@
 @if (isAddingTask){
-    <app-new-task (close)="onClickClose()" (add)="onAddTask($event)"/>
+    <!-- when not using service -->
+    <!-- <app-new-task (close)="onClickClose()" (add)="onAddTask($event)"/> -->
+    <app-new-task [userId] = "userId" (close)="onClickClose()" />
 }
 <section id="task">
     <header>
