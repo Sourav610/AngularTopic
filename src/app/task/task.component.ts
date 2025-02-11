@@ -1,14 +1,11 @@
 import { Component , Input } from "@angular/core"
 import { RequiredValidator } from "@angular/forms";
-import { TasksComponent } from "./tasks/tasks.component";
-import { NewTaskComponent } from "./new-task/new-task.component";
 import { type NewTaskData } from "./tasks/tasks.model";
 import { TaskService } from "./task.services";
 
 @Component({
     selector: 'app-task',
-    standalone: true,
-    imports: [TasksComponent,NewTaskComponent],
+    standalone: false,
     templateUrl: './task.component.html',
     styleUrl: './task.component.css'
   })
